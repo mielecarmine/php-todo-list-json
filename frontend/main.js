@@ -24,15 +24,13 @@ const App = createApp({
       this.newTask.todo = "";
 
       const data = {
-        params: {
-          newTask,
-        },
+        task,
       };
 
       const params = {
         headers: { "Content-Type": "multipart/form-data" },
       };
-      axios.post("../backend/api/get-list.php", data, params);
+      axios.post("../backend/api/store-task.php", data, params);
     },
   },
 
