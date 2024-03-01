@@ -26,10 +26,39 @@
   <body>
     <div id="app">
       <div class="container mt-5">
-        <h1 class="text-center">To do list</h1>
-        <ul class="list-group align-items-center mt-4">
-          <li class="list-group-item">An item</li>
-        </ul>
+        <div class="d-flex align-items-center flex-column">
+          <h1 class="text-center">To do list</h1>
+          <!-- INPUT -->
+          <div class="input-group mb-3 mt-3 width">
+            <button
+              @click="addTask()"
+              type="button"
+              class="btn btn-outline-success"
+            >
+              Add
+            </button>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="New task..."
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              v-model="newTask"
+              @keyup.enter="addTask()"
+            />
+          </div>
+          <!-- LIST -->
+          <ul class="list-group align-items-center">
+            <li
+              class="list-group-item width"
+              :class="[item.done ? 'done' : '']"
+              v-for="item in todoList"
+            >
+              {{ item.todo }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </body>
